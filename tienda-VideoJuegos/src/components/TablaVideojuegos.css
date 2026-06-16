@@ -1,6 +1,6 @@
 /* Estilos generales */
 .videojuegos-container {
-  max-width: 1400px;
+  max-width: 3000px;
   margin: 0 auto;
   padding: 2rem;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -262,4 +262,47 @@
 
 .videojuegos-container {
   animation: fadeIn 0.5s ease-out;
+}
+
+.acciones-columna {
+  text-align: center;
+  white-space: nowrap;
+}
+
+.btn-editar, .btn-eliminar {
+  padding: 6px 12px;
+  margin: 0 4px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  transition: all 0.2s ease;
+}
+
+.btn-editar {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.btn-editar:hover {
+  background-color: #45a049;
+  transform: scale(1.05);
+}
+
+.btn-eliminar {
+  background-color: #f44336;
+  color: white;
+}
+
+.btn-eliminar:hover {
+  background-color: #da190b;
+  transform: scale(1.05);
+}
+
+/* Responsive: ajustar botones en móviles */
+@media (max-width: 768px) {
+  .btn-editar, .btn-eliminar {
+    padding: 4px 8px;
+    font-size: 0.75rem;
+  }
 }

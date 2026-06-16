@@ -1,6 +1,6 @@
 import './TablaVideojuegos.css';
 
-function TablaVideojuegos({ videojuegos }) {
+function TablaVideojuegos({ videojuegos, onEliminar, onEditar }) {
   const formatearProgreso = (progreso) => {
     return `${Math.round(progreso * 100)}%`;
   };
@@ -42,13 +42,27 @@ function TablaVideojuegos({ videojuegos }) {
                 </td>
                 <td data-label="Progreso">
                   <div className="progress-container">
-                    <div 
-                      className="progress-bar" 
+                    <div
+                      className="progress-bar"
                       style={{ width: formatearProgreso(juego.progreso) }}
                     >
                       <span className="progress-text">{formatearProgreso(juego.progreso)}</span>
                     </div>
                   </div>
+                </td>
+                <td data-label="Acciones" className="acciones-columna">
+                  <button
+                    className="btn-editar"
+                    onClick={() => onEditar(juego)}
+                  >
+                    ✏️ Editar
+                  </button>
+                  <button
+                    className="btn-eliminar"
+                    onClick={() => onEliminar(juego.id)}
+                  >
+                    🗑️ Eliminar
+                  </button>
                 </td>
               </tr>
             ))}
