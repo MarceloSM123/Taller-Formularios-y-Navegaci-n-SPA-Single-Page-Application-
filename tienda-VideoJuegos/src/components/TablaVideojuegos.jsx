@@ -1,9 +1,10 @@
+import { useNavigate } from 'react-router-dom';
 import './TablaVideojuegos.css';
 
-function TablaVideojuegos({ videojuegos, onEliminar, onEditar }) {
-  const formatearProgreso = (progreso) => {
-    return `${Math.round(progreso * 100)}%`;
-  };
+function TablaVideojuegos({ videojuegos, onEliminar }) {
+  const navigate = useNavigate();
+
+  const formatearProgreso = (progreso) => `${Math.round(progreso * 100)}%`;
 
   return (
     <div className="videojuegos-container">
@@ -23,7 +24,8 @@ function TablaVideojuegos({ videojuegos, onEliminar, onEditar }) {
               <th>Año</th>
               <th>Precio</th>
               <th>Disponible</th>
-              <th>Progreso de Descarga</th>
+              <th>Progreso</th>
+              <th>Acciones</th>
             </tr>
           </thead>
           <tbody>
@@ -42,25 +44,16 @@ function TablaVideojuegos({ videojuegos, onEliminar, onEditar }) {
                 </td>
                 <td data-label="Progreso">
                   <div className="progress-container">
-                    <div
-                      className="progress-bar"
-                      style={{ width: formatearProgreso(juego.progreso) }}
-                    >
+                    <div className="progress-bar" style={{ width: formatearProgreso(juego.progreso) }}>
                       <span className="progress-text">{formatearProgreso(juego.progreso)}</span>
                     </div>
                   </div>
                 </td>
-                <td data-label="Acciones" className="acciones-columna">
-                  <button
-                    className="btn-editar"
-                    onClick={() => onEditar(juego)}
-                  >
+                <td data-label="Acciones" className="acciones-cell">
+                  <button className="btn-editar" onClick={() => navigate('/editar', { state: { juego } })}>
                     ✏️ Editar
                   </button>
-                  <button
-                    className="btn-eliminar"
-                    onClick={() => onEliminar(juego.id)}
-                  >
+                  <button className="btn-eliminar" onClick={() => onEliminar(juego.id)}>
                     🗑️ Eliminar
                   </button>
                 </td>
